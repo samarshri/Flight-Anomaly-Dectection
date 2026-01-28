@@ -1,0 +1,6 @@
+flight_id,speed,altitude,duration,delay,delay_ratio,speed_per_min,ai_flag,anomaly_score,explanation,severity,final_anomaly
+F101,850,35000,120,5,0.041666666666666664,7.083333333333333,0,0,,Low,0
+F102,420,15000,300,180,0.6,1.4,0,30,Low speed,Medium,0
+F103,900,38000,110,2,0.01818181818181818,8.181818181818182,0,0,,Low,0
+F104,300,8000,500,240,0.48,0.6,1,60,"Low speed, ML detected abnormal pattern",High,1
+F105,870,36000,115,4,0.034782608695652174,7.565217391304348,0,0,,Low,0

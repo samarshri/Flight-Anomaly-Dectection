@@ -1,0 +1,88 @@
+from flask import Flask, render_template
+import mysql.connector
+
+app = Flask(__name__)
+
+def get_db_connection():
+    return mysql.connector.connect(
+        host="localhost",
+        user="flightuser",
+        password="flightpass",
+        database="flight_anomaly"
+    )
+
+@app.route("/")
+def dashboard():
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    cursor.execute(
+        "SELECT flight_id, anomaly_score, final_anomaly, explanation FROM flights"
+    )
+    flights = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    return render_template("dashboard.html", flights=flights)
+
+if __name__ == "__main__":
+    app.run(debug=True)
+from flask import Flask
+import mysql.connector
+
+app = Flask(__name__)
+
+def fet_db_connection():
+	return mysql.connector.connect(
+		host="localhost",
+		user="flightuser",
+		password="flightpass",
+		database="flight_anomaly")
+
+@app.route("/")
+def dashboard():
+	conn=get_db_connection()
+	cursor=conn.curson(dictionary=True)
+
+	cursor.execute("""
+		SELECT dlight_id,anomaly_score,final_anomaly,explanation
+		FROM flights
+		""")
+
+	flights=cursor.fetchall()
+
+	cursor.close()
+	conn.close()
+
+    html = """
+    <h1>Flight Anomaly Dashboard</h1>
+
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Flight ID</th>
+            <th>Anomaly Score</th>
+            <th>Status</th>
+            <th>Explanation</th>
+        </tr>
+        {% for f in flights %}
+        <tr>
+            <td>{{ f.flight_id }}</td>
+            <td>{{ f.anomaly_score }}</td>
+            <td>
+                {% if f.final_anomaly == 1 %}
+                    Anomaly
+                {% else %}
+                    Normal
+                {% endif %}
+            </td>
+            <td>{{ f.explanation }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    """
+
+    return render_template_string(html, flights=flights)
+
+if __name__=="__main__":
+	app.run(debug=True)
