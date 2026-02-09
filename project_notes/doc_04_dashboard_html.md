@@ -11,11 +11,20 @@
 *   **The Auto-Refresher**: This simple line tells the browser "Hit the F5 key automatically every 5 seconds".
 *   This creates the "Real-Time" effect without needing complex WebSockets code.
 
-### 2. CSS Variables (The Theme System) (Line 11-20)
+### 2. CSS Variables (The Theme System) (Line 14-40)
 ```css
 :root {
-    --bg-color: #0a0e17;
-    --accent-red: #ff3860;
+    /* Backgrounds */
+    --bg-color: #f1f5f9;  /* Soft Cloud Blue-Grey */
+    --panel-color: #ffffff;
+    
+    /* Text */
+    --text-primary: #1e293b; /* Slate 800 */
+    
+    /* Accents */
+    --accent-blue: #0ea5e9; /* Sky 500 */
+    --accent-red: #ef4444; /* Red 500 */
+    --accent-green: #10b981; /* Emerald 500 */
 }
 ```
 *   We define our color palette here.

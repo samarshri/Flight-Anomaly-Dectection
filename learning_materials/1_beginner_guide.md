@@ -190,7 +190,7 @@ d:\New folder (6)\
 │   ├── flights.csv        # Historical training data
 │   └── final_ai_output.csv # AI results
 ├── templates/
-│   └── dashboard.html     # Web page template
+│   └── dashboard.html     # Web page template (Modern Light Theme)
 └── learning_materials/    # This guide!
 ```
 
